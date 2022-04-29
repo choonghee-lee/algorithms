@@ -1,3 +1,5 @@
+import java.math.BigInteger;
+
 public class RotateArray {
   void rotateWithTempArray(int arr[], int d, int n)
   {
@@ -36,6 +38,23 @@ public class RotateArray {
     }
   }
 
+  void rotateJugglingAlgorithm(int arr[], int d, int n)
+  { 
+    BigInteger a = new BigInteger(Integer.toString(n));
+    BigInteger b = new BigInteger(Integer.toString(d));
+    int gcd = a.gcd(b).intValue();
+
+    for(int i = 0; i < gcd; i++)
+    {
+      int temp = arr[i];
+      for(int j = 0; j < n/gcd; j++)
+      {
+        temp = arr[n-gcd * j];
+        arr[n-gcd * j] = arr[i];
+      }
+    }
+  }
+
   void printArray(int arr[], int size)
   {
     for(int i = 0; i < size; i++)
@@ -55,5 +74,9 @@ public class RotateArray {
 
     ra.rotateOneByOne(arr, 3, 7);
     ra.printArray(arr, 7); // 6 7 1 2 3 4 5
+
+    int arr2[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
+    ra.rotateOneByOne(arr2,11, 12);
+    ra.printArray(arr2, 12); // 6 7 1 2 3 4 5
   }
 }
