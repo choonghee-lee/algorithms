@@ -55,6 +55,28 @@ public class RotateArray {
     }
   }
 
+  void rorateReversalAlgorithm(int arr[], int d, int n) 
+  {
+    if(d == 0) return;
+    d = d % n;
+    reverseArray(arr, 0, d - 1);
+    reverseArray(arr, d, n - 1);
+    reverseArray(arr, 0, n - 1);
+  }
+
+  void reverseArray(int arr[], int start, int end)
+  {
+    int temp;
+    while(start < end)
+    {
+      temp = arr[start];
+      arr[start] = arr[end];
+      arr[end] = temp;
+      start++;
+      end--;
+    }
+  }
+
   void printArray(int arr[], int size)
   {
     for(int i = 0; i < size; i++)
@@ -75,8 +97,10 @@ public class RotateArray {
     ra.rotateOneByOne(arr, 3, 7);
     ra.printArray(arr, 7); // 6 7 1 2 3 4 5
 
-    int arr2[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
-    ra.rotateOneByOne(arr2,11, 12);
-    ra.printArray(arr2, 12); // 6 7 1 2 3 4 5
+    ra.rotateOneByOne(arr,3, 7);
+    ra.printArray(arr, 7); // 2 3 4 5 6 7 1
+
+    ra.rotateOneByOne(arr, 2, 7);
+    ra.printArray(arr, 7); // 4 5 6 7 1 2 3
   }
 }
