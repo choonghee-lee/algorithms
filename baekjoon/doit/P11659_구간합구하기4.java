@@ -26,6 +26,6 @@ class P11659_구간합구하기4
             int j = sc.nextInt();
             int k = sc.nextInt();
             System.out.println(sums[k] - sums[j-1]);
-        }¨
+        }
     }
 }
